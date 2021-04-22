@@ -1,0 +1,43 @@
+.container {
+  margin: 20px 0;
+}
+
+.card {
+    margin: 0 1% !important;
+}
+
+.infected {
+    border-bottom: 10px solid rgba(214, 69, 65, 1);
+}
+
+.active {
+  border-bottom: 10px solid rgba(248, 148, 6, 1);
+}
+
+.recovered {
+    border-bottom: 10px solid rgba(42, 187, 155, 1);
+}
+  
+.deaths {
+    border-bottom: 10px solid rgba(46, 49, 49, 1);  
+}
+
+.links {  
+    border-bottom: 10px solid rgba(0, 158, 197, 0.5);  
+}
+
+.btnMyGov{  
+    height: 30px;
+    margin-right: 5px !important;
+    width: 95px;
+}
+
+.btnGrid{
+    margin-top: 10px !important;
+}
+
+@media only screen and (max-width: 770px) {
+    .card{
+      margin: 2% 0 !important;
+    }  
+}  

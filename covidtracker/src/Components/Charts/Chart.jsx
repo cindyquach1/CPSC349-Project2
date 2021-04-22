@@ -3,7 +3,7 @@ import { fetchDailyData } from '../../API';
 import { Line, Bar } from 'react-chartjs-2';  
 import styles from './Chart.module.css'  
 import { Container } from '@material-ui/core';  
-  
+
 const Chart = ({data:{confirmed, recovered, deaths}, country}) => {  
     //this is a set representation with setter method of a state  
     const [dailyData, setDailyData] = useState([]);  
@@ -14,22 +14,24 @@ const Chart = ({data:{confirmed, recovered, deaths}, country}) => {
         }  
         fetchAPI();  
     },[]);  
-  
+    const active = confirmed["value"] - recovered["value"] - deaths["value"];
+    console.log('active: ', active);
+
 const lineChart =(  
     dailyData.length ? (   
         <Line data={{  
                         labels: dailyData.map(({date}) =>  date),  
                         datasets :[{  
                             data :  dailyData.map(({confirmed}) =>  confirmed),  
-                            label: 'Infected',  
-                            borderColor: '#3333ff',  
-                            fill: true,  
-                        },  
-                        {  
+                            label: 'Confirmed',
+                            borderColor: 'rgba(214, 69, 65, 1)',
+                            fill: true,
+                        },
+                        {
                             data :  dailyData.map(({deaths}) =>  deaths),  
-                            label: 'Deaths',  
-                            borderColor: 'red',  
-                            backgroundColor: 'rgba(255, 0, 0, 0.5)',  
+                            label: 'Deaths',
+                            borderColor: 'blue',
+                            backgroundColor: 'rgba(46, 49, 49, 1)',
                             fill: true,  
                         }]  
                     }}  
@@ -43,11 +45,11 @@ const BarChart  =(
        confirmed?(  
         <Bar  
         data={{  
-            labels: ['Infected', 'Recovered', 'Deaths'],  
+            labels: ['Confirmed', 'Active', 'Recovered', 'Deaths'],  
             datasets:[{  
                 label:'People',  
-                backgroundColor:['rgba(0, 0, 255, 0.5)','rgba(0, 255, 0, 0.5)', 'rgba(255, 0, 0, 0.5)' ],  
-                data:[confirmed.value, recovered.value, deaths.value]  
+                backgroundColor:['rgba(214, 69, 65, 1)', 'rgba(248, 148, 6, 1)', 'rgba(42, 187, 155, 1)', 'rgba(46, 49, 49, 1)' ],  
+                data:[confirmed.value, active, recovered.value, deaths.value]  
             }]  
         }}  
         options={{  

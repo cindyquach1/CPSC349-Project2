@@ -10,16 +10,15 @@ const Chart = ({data:{confirmed, recovered, deaths}, country}) => {
       
     useEffect(() => {  
     const fetchAPI = async()=>{  
-        setDailyData(await fetchDailyData());  
+        setDailyData(await fetchDailyData());
         }  
         fetchAPI();  
-    },[]);  
-    const active = confirmed["value"] - recovered["value"] - deaths["value"];
-    console.log('active: ', active);
+    },[]);
+    const active = confirmed - recovered - deaths;
 
 const lineChart =(  
-    dailyData.length ? (   
-        <Line data={{  
+    dailyData.length ? (
+        <Line data={{
                         labels: dailyData.map(({date}) =>  date),  
                         datasets :[{  
                             data :  dailyData.map(({confirmed}) =>  confirmed),  
@@ -38,7 +37,7 @@ const lineChart =(
                     options={ {  
                         scales : { xAxes : [ { gridLines : { display : false } } ], yAxes : [ { gridLines : { display : false } } ] }  
                     } }  
-                    />):null  
+                    />):null
                     );  
   
 const BarChart  =(  

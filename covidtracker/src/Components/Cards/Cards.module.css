@@ -21,6 +21,10 @@
 .deaths {
     border-bottom: 10px solid rgba(46, 49, 49, 1);  
 }
+  
+.predicted {
+    border-bottom: 10px solid rgba(44, 130, 201, 1);  
+}
 
 .links {  
     border-bottom: 10px solid rgba(0, 158, 197, 0.5);  

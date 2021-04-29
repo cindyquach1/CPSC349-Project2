@@ -1,8 +1,7 @@
 import React,{useState, useEffect} from 'react';  
 import { fetchDailyData } from '../../API';  
 import { Line, Bar } from 'react-chartjs-2';  
-import styles from './Chart.module.css'  
-import { Container } from '@material-ui/core';  
+import styles from './Chart.module.css';
 
 const Chart = ({data:{confirmed, recovered, deaths}, country}) => {  
     //this is a set representation with setter method of a state  
@@ -14,7 +13,6 @@ const Chart = ({data:{confirmed, recovered, deaths}, country}) => {
         }  
         fetchAPI();  
     },[]);
-    const active = confirmed - recovered - deaths;
 
 const lineChart =(  
     dailyData.length ? (
@@ -48,7 +46,7 @@ const BarChart  =(
             datasets:[{  
                 label:'People',  
                 backgroundColor:['rgba(214, 69, 65, 1)', 'rgba(248, 148, 6, 1)', 'rgba(42, 187, 155, 1)', 'rgba(46, 49, 49, 1)' ],  
-                data:[confirmed.value, active, recovered.value, deaths.value]  
+                data:[confirmed.value, confirmed.value - recovered.value - deaths.value, recovered.value, deaths.value]  
             }]  
         }}  
         options={{  

@@ -1,16 +1,13 @@
 import React from 'react';  
 import styles from './Cards.module.css'  
-import {Card, CardContent, Typography, Grid, StylesProvider} from '@material-ui/core';  
+import {Card, CardContent, Typography, Grid} from '@material-ui/core';  
 import CountUp from 'react-countup';  
 import cx from 'classnames';  
-import Button from '@material-ui/core/Button';  
 
 const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } } ) => {  
     if(!confirmed){  
       return 'Please wait..';  
   }
-  const active = confirmed["value"] - recovered["value"] - deaths["value"];
-  console.log(lastUpdate);
 
   return (
       <div className={styles.container}>
@@ -30,7 +27,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } } ) => {
                   <CardContent>
                       <Typography color="textSecondary" gutterBottom>Active</Typography>
                       <Typography variant="h5">
-                          <CountUp start={0} end={active} duration={3} separator="," />
+                          <CountUp start={0} end={confirmed.value - recovered.value - deaths.value} duration={3} separator="," />
                       </Typography>
                       <Typography color="textSecondary">{new Date(lastUpdate).toDateString()}</Typography>
                       <Typography variant="body2">Number of active cases of Covid-19</Typography>
@@ -56,6 +53,17 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } } ) => {
                       </Typography>
                       <Typography color="textSecondary" >{new Date(lastUpdate).toDateString()}</Typography>
                       <Typography variant="body2">Number of deaths caused by Covid-19</Typography>
+                  </CardContent>
+              </Grid>  
+
+              <Grid style={{backgroundColor: 'rgba(137, 196, 244, 1)'}}  item component={Card} xs={12} md={2} className={cx(styles.card, styles.predicted)}>  
+                  <CardContent>  
+                      <Typography color="textSecondary" gutterBottom>Predicted</Typography>
+                      <Typography variant="h5">
+                          <CountUp start={0} end={(confirmed.value*5 + deaths.value*500)/2} duration={3} separator="," />
+                      </Typography>
+                      <Typography color="textSecondary" >{new Date(lastUpdate).toDateString()}</Typography>
+                      <Typography variant="body2">Number of predicted actual cases of Covid-19</Typography>
                   </CardContent>
               </Grid>
           </Grid>

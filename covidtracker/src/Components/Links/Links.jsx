@@ -7,7 +7,7 @@ const Links = () => {
     
     return (
         <div className={styles.container}>
-            <Grid justify="center">
+            <Grid>
                 <Grid className={styles.btnGrid} >
                     <Button style={{backgroundColor: '#004D40'}} className={styles.btnMyGov}  variant="contained" color="primary" href="https://disease.sh/">  
                     source

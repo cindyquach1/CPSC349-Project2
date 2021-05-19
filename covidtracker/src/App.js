@@ -1,6 +1,6 @@
 import React from 'react';  
-import styles from './App.module.css'  
-import {Cards, Charts, CountryPicker, Links } from './Components'  
+import styles from './App.module.css';  
+import {Cards, Charts, CountryPicker, Links, Table } from './Components';
 import {fetchCountryData} from './API';//we dont have to specify index file name if your file name is index  
 import coronaImage from './images/covid19.jpeg';  
 class App extends React.Component {  
@@ -28,6 +28,7 @@ class App extends React.Component {
             <Links data={data}/>
             <CountryPicker handleCountryChange={this.handleCountryChange}/>
             <Charts data={data} country={country}/>
+            <Table/>
             <h6>This site was developed by WebTogether</h6>
         </div>
     )}

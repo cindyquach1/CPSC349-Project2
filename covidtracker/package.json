@@ -2,6 +2,7 @@
   "name": "covidtracker",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://ecs.fullerton.edu/~cs349s17",
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
@@ -17,6 +18,7 @@
     "react-chartjs-2": "^3.0.2",
     "react-countup": "^4.3.3",
     "react-dom": "^17.0.2",
+    "react-map-gl": "^6.1.15",
     "react-scripts": "4.0.3",
     "redux": "^4.1.0",
     "web-vitals": "^1.0.1"
